@@ -3,7 +3,6 @@ import os
 
 sys.path.insert( 0, os.path.join(sys.path[0],"..") )
 
-
 from nesteddictionary import NestedDict
 
 #basic mixed nested dictionary
@@ -25,4 +24,4 @@ print( "\nKeypaths and values containing 3:\n", nd.findall_kv(3) )
 nd.insert( [1,'newkey'], 'newval' )
 
 #Example of JSON dumps
-print ( "\nJSON dumps:\n", nd.dumps(1) )
+print ( "\nJSON dumps:\n", nd.dumps2(2) )

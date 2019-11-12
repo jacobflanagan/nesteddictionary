@@ -20,6 +20,6 @@ Changes (PEP 440: v<major>.<minor>.<patch>):
     > recursion: 1.77 µs ± 4.05 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
     > direct:    89.3 ns ± 0.448 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
 
-Inspirational References: 
-- https://github.com/ducdetronquito/scalpl/ : A similar implementation to nested dictionaries.
+References: 
+- https://github.com/ducdetronquito/scalpl/ : A similar implementation to nested dictionaries. Pulled some methodology ideas from here.
 - https://stackoverflow.com/questions/14692690/access-nested-dictionary-items-via-a-list-of-keys : Speed up dictionary acces but non-pythonic.

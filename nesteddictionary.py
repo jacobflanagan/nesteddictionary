@@ -32,7 +32,6 @@ from typing import (
 
 from functools import reduce
 import operator
-import copy
 
 #User Exceptions
 class KeypathError(Exception): pass
@@ -108,8 +107,8 @@ class NestedDict:
 
     def _traverse( self, keypath, construct_path = False ):
         '''
-        Traverse a dictionary with a given a key path. 
-        While faster than recursion, the functools.reduce method doesn't allow for tracking along keys the way nesteddict_v1 had.
+        Traverse a dictionary with a given key path. 
+        While faster than recursion, the functools.reduce method doesn't allow for tracking along keys the way nesteddict_v1.1.0 had (which was useful for debugging).
 
         param list keypath: The key path; either a single key or a list of keys.
         '''
@@ -134,22 +133,19 @@ class NestedDict:
     @classmethod
     def _nestize( cls, d ):
         '''
-        NestedDict from dictionary or list. If something else, returns param d back.
+        Returns d as NestedDict if a dictionary or a list. Else returns original d back
         '''
-        try:
+        if isinstance(d,(dict,list)):
             return cls( d )
-        except TypeError:
+        else:
             return d
 
     def __getitem__( self, keypath ):
         '''
-        Returns a NestedDict of the child if a dict or list. Otherwise returns value.
+        Returns a NestedDict of value if a dict or list. Otherwise just returns the value.
         '''
         item = self._traverse(keypath)
-        try:                #nestizing result; only dict or list can be a NestedDict
-            return self._nestize( item )
-        except TypeError:   #thus, just return its value
-            return item
+        return self._nestize( item )
 
     def _cast_index(self, item):
         '''
@@ -196,7 +192,7 @@ class NestedDict:
         '''
         Set value using a string with a seperator. Default seperator is a dot, but this can be changed using the sep parameter.
 
-        NOTE: Integer-like keys will be treated as an integers. If the key needs to be a string representation of an integer, encase it with quotes (i.e., use ", ', \" or \')
+        NOTE: Integer-like keys will be treated as integers. If the key needs to be a string representation of an integer, encase it with quotes (i.e., use ", ', \" or \')
 
         param str keypath_str: keypath represented by a string with seperators defined by sep
         param value: value to be set at keypath
@@ -220,20 +216,23 @@ class NestedDict:
         return self._data.copy()
 
     def keys(self):
-        if isinstance(self._data,list):
+        if isinstance(self._data,list): #if a list, give all possible indecies of a list
             return list( range( len(self._data) ) )
         return self._data.keys()
 
-    def dumps(self,indent=2) -> str:
+    def dumps(self, *args, **kwargs):
+        '''
+        Shortcut to json.dumps for the underlying dictionary. Same thing as json.dumps( nestd_dict.unnest() ) if nestd_dict were the NestedDict.
+        See json.dumps for parameters.
+        '''
         import json
-        return json.dumps( self._data, indent=indent )
+        return json.dumps( self._data,*args, **kwargs)
 
     def insert(self, keypath: list, value, construct_path=True ) -> None: 
         '''
         Tries to insert a new value by constructing a path if it doesn't exist and inserting the value.
         '''
         journeykeys, destinationkey = keypath[:-1], keypath[-1]
-        print(journeykeys,destinationkey)
         self._traverse( journeykeys, construct_path=True )[ destinationkey ] = value
 
     def findall(self, key) -> list:
