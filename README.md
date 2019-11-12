@@ -8,7 +8,7 @@ Benefits:
 - get and set methods: Navigate using a keypath string with seperator ( ex: nested_dict.get('path.to.key') )
 - insert method: create a full path to a nested key and set a value, even if the parent keys leading to the destination key don't already exist ( i.e., nested_dict.insert( ['new','path','to','key'], newval ) will add to the existing dictionay, resulting in: NestedDict({ 'path':{'to':{'key':val}}, 'newpath':{'to':{'key':newval}} }) ).
 
-Changes (PEP 440: v<major>.<minor>.<patch>):
+Changes (PEP 440: major.minor.path):
 - v1.0.1: Initial working version of nesteddictionary.
 - v1.2.0: Changed dictionary traversing from recursive to functools.reduce; it's less pythonic but faster (yet, still not nearly as fast as directly accessing dicts and list). For comparison, when doing:
     > d = [{1:{2:'value'}}]   
