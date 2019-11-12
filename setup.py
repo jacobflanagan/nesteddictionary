@@ -11,7 +11,7 @@ setuptools.setup(
     description="Wrapper for the dict class that extends the functionality for nested dicts including keypaths and key searching methods. This includes mixed dicts and lists.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="",
+    url="https://github.com/jacobflanagan/nesteddictionary",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
