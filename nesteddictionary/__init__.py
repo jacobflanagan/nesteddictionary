@@ -148,7 +148,7 @@ class NestedDict:
         except ValueError:      #assume item wasn't meant to be an integer and return
             return item
 
-    def get(self, keypath_str:str, sep:str = '.'):
+    def get(self, keypath_str:str, sep:str = '.', print_to_screen:bool = False):
         '''
         Get value using a string with a seperator. Default seperator is a dot, but this can be changed using the sep parameter.
 
@@ -156,9 +156,11 @@ class NestedDict:
 
         param str keypath_str: keypath represented by a string with seperators defined by sep
         param str sep: seperator used for parsing keypath_str
+        param bool print_to_screen: used if you want the keypath returned to the screen
         '''
         keypath = [self._cast_index(item) for item in keypath_str.split(sep)]
-        print( keypath )
+        if print_to_screen:
+            print(keypath)
         return self.__getitem__(keypath)
 
     def __iter__(self) -> Iterator:
