@@ -158,7 +158,6 @@ class NestedDict:
         param str sep: seperator used for parsing keypath_str
         '''
         keypath = [self._cast_index(item) for item in keypath_str.split(sep)]
-        print( keypath )
         return self.__getitem__(keypath)
 
     def __iter__(self) -> Iterator:
