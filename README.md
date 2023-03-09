@@ -25,6 +25,7 @@ Changes (PEP 440: major.minor.patch):
 - v1.0.1: Initial working version of the nesteddictionary class.
 - v1.2.0: Changed dictionary traversing from recursive to functools.reduce; This is less pythonic yet faster (however, still not nearly as fast as directly accessing dicts and list).
 - v1.2.1: Minor patch - removes a debugging print statement in the get method.
+    
 For comparison, when doing (these are not included in tests, but are easy enough to write and test on your own):
   ```python
   >>> d = [{1:{2:'value'}}]   
