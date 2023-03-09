@@ -1,5 +1,5 @@
 # Nested Dictionary
-**Version:** 1.2.1
+**Version:** 1.2.2
 
 A wrapper for python dicts that allows you to search and navigate through nested dicts using **key paths**. Also works with mixed dictionaries (mixuture of nested lists and dicts). Derived from a need to search for keys in a nested dictionary; too much time was spent on building yet another full class for nested dictionaries, but it suited our needs.
 
@@ -24,7 +24,7 @@ Changes (PEP 440: major.minor.patch):
 - v0.1.0: Developed methods for searching keys in nested dictionaries.
 - v1.0.1: Initial working version of the nesteddictionary class.
 - v1.2.0: Changed dictionary traversing from recursive to functools.reduce; This is less pythonic yet faster (however, still not nearly as fast as directly accessing dicts and list).
-- v1.2.1: Minor patch - removes a debugging print statement in the get method.
+- v1.2.2: Minor patch - removes a debugging print statement in the get method.
     
 For comparison, when doing (these are not included in tests, but are easy enough to write and test on your own):
   ```python

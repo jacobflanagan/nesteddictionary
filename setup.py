@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="nesteddictionary",
-    version="1.2.0",
+    version="1.2.2",
     author="Jacob Flanagan",
     author_email="flanagan.jacob@gmail.com",
     description="Wrapper for the dict class that extends the functionality for nested dicts including navigating using keypaths and nested key searching. This includes mixed dicts and lists.",
